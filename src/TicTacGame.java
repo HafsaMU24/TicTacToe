@@ -6,11 +6,11 @@ private Player p1;
 private Player p2;
 private Scanner scanner;
 
-public TicTacGame () {
+public TicTacGame (String player1Name, String player2Name) {
     board = new Board();
     scanner = new Scanner(System.in);
-    p1 = new Player('X', scanner);
-    p2 = new Player('O', scanner);
+    p1 = new Player(player1Name,'X', scanner);  // Skapa Spelare med namn och symbol
+    p2 = new Player(player2Name,'O', scanner);
 }
 public void startGame() { // Starta spelet
     Player currentPlayer = p1;
@@ -18,7 +18,7 @@ public void startGame() { // Starta spelet
 
     while (true) {
         board.displayBoard();
-        System.out.println("Player " + currentPlayer.getSymbol() + "enter your move: ");
+        System.out.println(currentPlayer.getName() +"(" + currentPlayer.getSymbol() + "), enter your move: ");
         int[] move = currentPlayer.getMove();
 
         if (!board.isValidMove(move[0], move[1])) { // Kontrollera giltigt drag
@@ -29,9 +29,9 @@ public void startGame() { // Starta spelet
         board.makeMove(move[0], move[1], currentPlayer.getSymbol());
         if (board.checkWin(currentPlayer.getSymbol())) { // Kontrollera vinst
             board.displayBoard();
-            System.out.println("Player " + currentPlayer.getSymbol() + "wins!");
+            System.out.println(currentPlayer.getName() + "wins!");
             gameWon = true;
-        } else if (board.isFull()) { // Kontrollera oAvgjort
+        } else if (board.isFull()) { // Kontrollera oavgjort
             board.displayBoard();
             System.out.println("It's a draw!");
             gameWon = true;

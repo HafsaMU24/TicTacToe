@@ -1,15 +1,21 @@
 import java.util.Scanner;
 
 public class Player {
-private  char symbol;
+private  String name;
+private char symbol;
 private Scanner scanner;
 
 // Konstruktor
-public Player(char symbol, Scanner scanner) {
+public Player(String name, char symbol, Scanner scanner) {
+    this.name = name;
     this.symbol = symbol;
     this.scanner = scanner;
 }
-// Hämta apelarens symbol
+// Hämta spelarens symbol
+    public  String getName() {
+      return name;
+    }
+
 public  char getSymbol() {
     return  symbol;
 }
